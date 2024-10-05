@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Chr_AnimManager : MonoBehaviour
 {
+    [Header ("Animaciones")]
+    public Animator MenuPanelAnim;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,5 +16,13 @@ public class Chr_AnimManager : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void MenuPanelOpen(){
+        MenuPanelAnim.SetTrigger("Open");
+    }
+
+    public void MenuPanelClose(){
+        MenuPanelAnim.SetTrigger("Close");
     }
 }

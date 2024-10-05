@@ -16,6 +16,9 @@ public class chr_UI_Manager : MonoBehaviour
 
     [Header ("Traductor")]
     public Traduccion idioma; 
+
+    [Header ("Scripts")]
+    [SerializeField] private Chr_AnimManager AnimManager;
     // Start is called before the first frame update
     void Start()
     {
@@ -35,6 +38,13 @@ public class chr_UI_Manager : MonoBehaviour
         PausePanel.SetActive(false);
         GameoverPanel.SetActive(false);
         ExitPanel.SetActive(false);
+    }
+
+    IEnumerator SplashScreen(){
+        yield return new WaitForSeconds(1.5f);
+        HideAllPanels();
+        MenuPanel.SetActive(true);
+        AnimManager.MenuPanelOpen();
     }
 
     public void StartGame(){
