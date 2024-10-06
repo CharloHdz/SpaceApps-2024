@@ -19,10 +19,13 @@ public class chr_UI_Manager : MonoBehaviour
     [SerializeField] private Slider MusicSlider;
     [SerializeField] private Slider SFXSlider;
     [SerializeField] private TextMeshProUGUI ResoText;
+    [SerializeField] private TextMeshProUGUI WindowedStateText;
+    [SerializeField] private Button cambiarResolucionButton;  // Añadido para vincular el botón
 
     [Header ("Diccionarios")]
     public Traduccion idioma; 
-    public Reoslution resolucion;
+    public Resolution resolucion;  // Corrección de nombre "Resolution"
+    public bool WindowedState;
 
     [Header ("Scripts")]
     [SerializeField] private Chr_AnimManager AnimManager;
@@ -44,29 +47,20 @@ public class chr_UI_Manager : MonoBehaviour
         StartCoroutine(SplashScreen());
         HideAllPanels();
 
-        //Cargar los valores
+        // Cargar los valores
         MusicSlider.value = PlayerPrefs.GetFloat("Music", 0.5f);
         SFXSlider.value = PlayerPrefs.GetFloat("SFX", 0.5f);
+
+        // Cargar la resolución inicial
+        resolucion = Resolution.r720x480;
+
+        // Asignar el botón de cambio de resolución a la función
+        cambiarResolucionButton.onClick.AddListener(CambiarResolucion);
     }
 
-    // Update is called once per frame
+    // Update se ha limpiado de redundancias
     void Update()
     {
-        switch(resolucion){
-            case Reoslution.r720x480:
-                Screen.SetResolution(1080, 720, true);
-                ResoText.text = "1080x720";
-                break;
-            case Reoslution.r1080x720:
-                Screen.SetResolution(1920, 1080, true);
-                ResoText.text = "1920x1080";
-                break;
-            case Reoslution.r1920x1080:
-                Screen.SetResolution(720, 480, true);
-                ResoText.text = "720x480";
-                break;
-        }
-
         if(Input.GetKeyDown(KeyCode.T)){
             Gameover();
         }
@@ -81,6 +75,64 @@ public class chr_UI_Manager : MonoBehaviour
         ExitPanel.SetActive(false);
     }
 
+    public void CambiarResolucion(){
+        // Cambiar la resolución cíclicamente
+        resolucion = (Resolution)(((int)resolucion + 1) % System.Enum.GetValues(typeof(Resolution)).Length);
+
+        // Actualiza la resolución según el nuevo valor de la enumeración
+        switch(resolucion){
+            case Resolution.r720x480:
+                if (WindowedState)
+                {
+                    Screen.SetResolution(720, 405, true);
+                }
+                else
+                {
+                    Screen.SetResolution(720, 405, false);
+                }
+                ResoText.text = "720x405";
+                break;
+            case Resolution.r1080x720:
+                if (WindowedState)
+                {
+                    Screen.SetResolution(1280, 720, true);
+                }
+                else
+                {
+                    Screen.SetResolution(1280, 720, false);
+                }
+                ResoText.text = "1280x720";
+                break;
+            case Resolution.r1920x1080:
+                if (WindowedState)
+                {
+                    Screen.SetResolution(1920, 1080, true);
+                }
+                else
+                {
+                    Screen.SetResolution(1920, 1080, false);
+                }
+                ResoText.text = "1920x1080";
+                break;
+        }
+
+        Debug.Log("Resolución cambiada a: " + ResoText.text);
+    }
+
+    public void Windowed(){
+        if(WindowedState){
+            WindowedState = true;
+            Screen.fullScreen = true;
+            WindowedStateText.gameObject.SetActive(true);
+        } else {
+            WindowedState = false;
+            Screen.fullScreen = false;
+            // Ajustamos la ventana para que sea sin bordes y ocupe la pantalla como ventana
+            Screen.SetResolution(Screen.currentResolution.width, Screen.currentResolution.height, false);
+            WindowedStateText.gameObject.SetActive(false);
+        }
+    }
+
     IEnumerator SplashScreen(){
         yield return new WaitForSeconds(0.2f);
         HideAllPanels();
@@ -88,12 +140,14 @@ public class chr_UI_Manager : MonoBehaviour
         MenuPanel.SetActive(true);
         AnimManager.AnimMenuPanelOpen();
         AnimManager.AnimSettingsPanelOpen();
+        chr_GameManager.instance.gameState = GameState.MainMenu;
     }
 
     public void StartGame(){
         StartCoroutine(LoadGame());
         AnimManager.AnimMenuPanelClose();
         AnimManager.AnimSettingsPanelClose();
+        chr_GameManager.instance.gameState = GameState.Game;
     }
 
     public IEnumerator LoadGame(){
@@ -112,18 +166,42 @@ public class chr_UI_Manager : MonoBehaviour
 
     public void Pause(){
         HideAllPanels();
+        GamePanel.SetActive(true);
         PausePanel.SetActive(true);
         AnimManager.AnimSettingsPanelOpened();
+        chr_GameManager.instance.gameState = GameState.Pause;
     }
 
     public void ResumeGame(){
         HideAllPanels();
         GamePanel.SetActive(true);
+        chr_GameManager.instance.gameState = GameState.Game;
     }
 
     public void Gameover(){
         HideAllPanels();
         GameoverPanel.SetActive(true);
+        chr_GameManager.instance.gameState = GameState.GameOver;
+    }
+
+    public void CancelExit(){
+        switch(chr_GameManager.instance.gameState){
+            case GameState.MainMenu:
+                ExitPanel.SetActive(false);
+                break;
+            case GameState.Game:
+                ExitPanel.SetActive(false);
+                break;
+            case GameState.Pause:
+                ExitPanel.SetActive(false);
+                break;
+            case GameState.GameOver:
+                ExitPanel.SetActive(false);
+                break;
+            case GameState.Exit:
+                ExitPanel.SetActive(false);
+                break;
+        }
     }
 
     public void TakeScreenshot(){
@@ -142,7 +220,7 @@ public class chr_UI_Manager : MonoBehaviour
         Debug.Log("Music: " + MusicSlider.value);
         Debug.Log("SFX: " + SFXSlider.value);
 
-        //Guardar los valores
+        // Guardar los valores
         PlayerPrefs.SetFloat("Music", MusicSlider.value);
         PlayerPrefs.SetFloat("SFX", SFXSlider.value);
         PlayerPrefs.Save();
@@ -163,10 +241,10 @@ public enum Traduccion
     Ingles
 }
 
-public enum Reoslution
+public enum Resolution // Cambio de nombre "Resolution"
 {
     r720x480,
     r1080x720,
     r1920x1080
-}  
+}
 
