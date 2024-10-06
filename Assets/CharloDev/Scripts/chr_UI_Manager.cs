@@ -22,7 +22,7 @@ public class chr_UI_Manager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        StartCoroutine(SplashScreen());
     }
 
     // Update is called once per frame
@@ -41,8 +41,9 @@ public class chr_UI_Manager : MonoBehaviour
     }
 
     IEnumerator SplashScreen(){
-        yield return new WaitForSeconds(1.5f);
-        HideAllPanels();
+        yield return new WaitForSeconds(0.5f);
+        //HideAllPanels();
+        PausePanel.SetActive(false);
         MenuPanel.SetActive(true);
         AnimManager.MenuPanelOpen();
     }

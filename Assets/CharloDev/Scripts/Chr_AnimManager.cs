@@ -6,6 +6,7 @@ public class Chr_AnimManager : MonoBehaviour
 {
     [Header ("Animaciones")]
     public Animator MenuPanelAnim;
+    public Animator PausePanelAnim;
     // Start is called before the first frame update
     void Start()
     {
