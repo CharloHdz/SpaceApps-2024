@@ -51,5 +51,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "SpaceApps_2024.sln"
+    "dotnet.defaultSolution": "SpaceApps-2024.sln"
 }

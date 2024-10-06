@@ -1,13 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering;
 
-public class PaintManager : Singleton<PaintManager>
-{
+public class PaintManager : Singleton<PaintManager>{
+
     public Shader texturePaint;
-    public Shader extendIsland;
+    public Shader extendIslands;
 
     int prepareUVID = Shader.PropertyToID("_PrepareUV");
     int positionID = Shader.PropertyToID("_PainterPosition");
@@ -25,17 +22,16 @@ public class PaintManager : Singleton<PaintManager>
 
     CommandBuffer command;
 
-    public override void Awake()
-    {
-        base.Awake(); 
-
+    public override void Awake(){
+        base.Awake();
+        
         paintMaterial = new Material(texturePaint);
-        extendMaterial = new Material(extendIsland);
+        extendMaterial = new Material(extendIslands);
         command = new CommandBuffer();
+        command.name = "CommmandBuffer - " + gameObject.name;
     }
 
-    public void initTextures(sp_Paintable paintable)
-    {
+    public void initTextures(Paintable paintable){
         RenderTexture mask = paintable.getMask();
         RenderTexture uvIslands = paintable.getUVIslands();
         RenderTexture extend = paintable.getExtend();
@@ -54,8 +50,8 @@ public class PaintManager : Singleton<PaintManager>
         command.Clear();
     }
 
-    public void paint(sp_Paintable paintable, Vector3 pos, float radius = 1f, float hardness = .5f, float strength = .5f, Color? color = null)
-    {
+
+    public void paint(Paintable paintable, Vector3 pos, float radius = 1f, float hardness = .5f, float strength = .5f, Color? color = null){
         RenderTexture mask = paintable.getMask();
         RenderTexture uvIslands = paintable.getUVIslands();
         RenderTexture extend = paintable.getExtend();
@@ -69,7 +65,7 @@ public class PaintManager : Singleton<PaintManager>
         paintMaterial.SetFloat(radiusID, radius);
         paintMaterial.SetTexture(textureID, support);
         paintMaterial.SetColor(colorID, color ?? Color.red);
-        extendMaterial.SetFloat(uvOffsetID, paintable.extendIslandOffset);
+        extendMaterial.SetFloat(uvOffsetID, paintable.extendsIslandOffset);
         extendMaterial.SetTexture(uvIslandsID, uvIslands);
 
         command.SetRenderTarget(mask);
@@ -84,4 +80,5 @@ public class PaintManager : Singleton<PaintManager>
         Graphics.ExecuteCommandBuffer(command);
         command.Clear();
     }
+
 }
