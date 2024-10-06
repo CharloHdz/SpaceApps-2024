@@ -7,6 +7,10 @@ public class Chr_AnimManager : MonoBehaviour
     [Header ("Animaciones")]
     public Animator MenuPanelAnim;
     public Animator PausePanelAnim;
+    public Animator SettingsPanelAnim;
+    public Animator GamePanelAnim;
+    public Animator ExitPanelAnim;
+    public Animator GameOverPanelAnim;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,11 +23,25 @@ public class Chr_AnimManager : MonoBehaviour
         
     }
 
-    public void MenuPanelOpen(){
+    //Menu
+    public void AnimMenuPanelOpen(){
         MenuPanelAnim.SetTrigger("Open");
     }
 
-    public void MenuPanelClose(){
+    public void AnimMenuPanelClose(){
         MenuPanelAnim.SetTrigger("Close");
+    }
+
+    //Settings
+    public void AnimSettingsPanelOpen(){
+        SettingsPanelAnim.SetTrigger("Open");
+    }
+    
+    public void AnimSettingsPanelClose(){
+        SettingsPanelAnim.SetTrigger("Close");
+    }
+
+    public void AnimSettingsPanelOpened(){
+        SettingsPanelAnim.SetTrigger("Opened");
     }
 }
