@@ -40,6 +40,12 @@ public class chr_UI_Manager : MonoBehaviour
     public Image screenshotImage2;
     public TMP_InputField playerNameInput;
 
+    [Header("Musica")]
+    public AudioListener audioListener;
+    public AudioClip audioMenu;
+    public AudioClip audioGame;
+    public AudioClip musicClip;
+
     private void Awake() {
         if(instance == null){
             instance = this;
@@ -63,6 +69,7 @@ public class chr_UI_Manager : MonoBehaviour
 
         // Asignar el botón de cambio de resolución a la función
         cambiarResolucionButton.onClick.AddListener(CambiarResolucion);
+
     }
 
     // Update se ha limpiado de redundancias
@@ -71,6 +78,9 @@ public class chr_UI_Manager : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.T)){
             Gameover();
         }
+
+        // Actualizar el volumen de la música
+
     }
 
     void HideAllPanels(){
@@ -162,6 +172,8 @@ public class chr_UI_Manager : MonoBehaviour
         AnimManager.AnimMenuPanelOpen();
         AnimManager.AnimSettingsPanelOpen();
         chr_GameManager.instance.gameState = GameState.MainMenu;
+
+        //Reproducir música de menú
     }
 
     public void StartGame(){
@@ -169,6 +181,8 @@ public class chr_UI_Manager : MonoBehaviour
         AnimManager.AnimMenuPanelClose();
         AnimManager.AnimSettingsPanelClose();
         chr_GameManager.instance.gameState = GameState.Game;
+
+        //Reproducir música de juego
     }
 
     public IEnumerator LoadGame(){
