@@ -10,6 +10,7 @@ public class chr_GameManager : MonoBehaviour
     {
         if(instance == null){
             instance = this;
+            DontDestroyOnLoad(this);
         }else{
             Destroy(this);
         }
@@ -52,11 +53,15 @@ public class chr_GameManager : MonoBehaviour
     }
 
     public void CargarJuego1(){
-        SceneManager.LoadScene("Game");
+        SceneManager.LoadScene("PaintPlanet");
     }
 
     public void CargarJuego2(){
-        SceneManager.LoadScene("Game2");
+        SceneManager.LoadScene("Plano");
+    }
+
+    public void RegresarMenu(){
+        SceneManager.LoadScene("Chr_Scene");
     }
 }
 

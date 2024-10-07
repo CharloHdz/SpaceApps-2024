@@ -9,6 +9,12 @@ EditorBuildSettings:
     path: Assets/CharloDev/Scenes/Chr_Scene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
+    path: Assets/Fer/Scenes/PaintPlanet.unity
+    guid: 0b115cc409e4f4e4192801e4e8630060
+  - enabled: 1
+    path: Assets/quique/Scenes/Plano.unity
+    guid: 72d8c3b0f3dd51442bc43a0a7dbcdeb4
+  - enabled: 0
     path: Assets/Fer/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
   m_configObjects: {}
