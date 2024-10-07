@@ -5,6 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class chr_GameManager : MonoBehaviour
 {
+
+    [Header("Niveles de juego")]
+    [SerializeField] private GameObject FerLevel;
+    [SerializeField] private GameObject QuiqueLevel;
     public static chr_GameManager instance;
     void Awake()
     {
@@ -53,11 +57,13 @@ public class chr_GameManager : MonoBehaviour
     }
 
     public void CargarJuego1(){
-        SceneManager.LoadScene("PaintPlanet");
+        FerLevel.SetActive(true);
+        QuiqueLevel.SetActive(false);
     }
 
     public void CargarJuego2(){
-        SceneManager.LoadScene("Plano");
+        FerLevel.SetActive(false);
+        QuiqueLevel.SetActive(true);
     }
 
     public void RegresarMenu(){
