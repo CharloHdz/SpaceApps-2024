@@ -64,7 +64,7 @@ public class PlacementSystem : MonoBehaviour
         GameObject newObject = Instantiate(database.objectsData[selectedObjectIndex].prefab);
         newObject.transform.position = grid.CellToWorld(gridPosition);
 
-        placedGameObject.Add( newObject );
+        placedGameObject.Add(newObject);
         GridData selectedData = database.objectsData[selectedObjectIndex].ID == 0 ?
             floorData :
             furnitureData;
