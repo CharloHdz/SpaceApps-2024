@@ -44,9 +44,9 @@ public class GridData
         foreach (var pos in positionToOccupy)
         {
             if (!placedObjects.ContainsKey(pos))
-                return false;
+                return true;
         }
-        return true;
+        return false;
     }
 
 }
