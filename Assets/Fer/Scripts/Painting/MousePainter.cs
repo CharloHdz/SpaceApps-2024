@@ -11,6 +11,10 @@ public class MousePainter : MonoBehaviour{
     public float strength = 1;
     public float hardness = 1;
 
+    public void SetPaintColor(Color newColor){
+        paintColor = newColor;
+    }
+
     void Update(){
 
         bool click;
