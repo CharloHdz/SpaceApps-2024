@@ -19,7 +19,6 @@ public class chr_UI_Manager : MonoBehaviour
 
     [Header ("Elementos de UI")]
     [SerializeField] private Slider MusicSlider;
-    [SerializeField] private Slider SFXSlider;
     [SerializeField] private TextMeshProUGUI ResoText;
     [SerializeField] private TextMeshProUGUI WindowedStateText;
     [SerializeField] private Button cambiarResolucionButton;  // Añadido para vincular el botón
@@ -41,10 +40,9 @@ public class chr_UI_Manager : MonoBehaviour
     public TMP_InputField playerNameInput;
 
     [Header("Musica")]
-    public AudioListener audioListener;
-    public AudioClip audioMenu;
-    public AudioClip audioGame;
-    public AudioClip musicClip;
+    public AudioSource audioMenu;
+    public AudioSource audioGame;
+
 
     private void Awake() {
         if(instance == null){
@@ -62,7 +60,6 @@ public class chr_UI_Manager : MonoBehaviour
 
         // Cargar los valores
         MusicSlider.value = PlayerPrefs.GetFloat("Music", 0.5f);
-        SFXSlider.value = PlayerPrefs.GetFloat("SFX", 0.5f);
 
         // Cargar la resolución inicial
         resolucion = Resolution.r720x480;
@@ -80,6 +77,11 @@ public class chr_UI_Manager : MonoBehaviour
         }
 
         // Actualizar el volumen de la música
+        audioMenu.volume = MusicSlider.value;
+        audioGame.volume = MusicSlider.value;
+
+        //guardar los valores
+        PlayerPrefs.SetFloat("Music", MusicSlider.value);
 
     }
 
@@ -173,7 +175,7 @@ public class chr_UI_Manager : MonoBehaviour
         AnimManager.AnimSettingsPanelOpen();
         chr_GameManager.instance.gameState = GameState.MainMenu;
 
-        //Reproducir música de menú
+        //Reproducir música de menu
     }
 
     public void StartGame(){
@@ -183,6 +185,8 @@ public class chr_UI_Manager : MonoBehaviour
         chr_GameManager.instance.gameState = GameState.Game;
 
         //Reproducir música de juego
+        audioMenu.Stop();
+        audioGame.Play();
     }
 
     public IEnumerator LoadGame(){
@@ -255,11 +259,9 @@ public class chr_UI_Manager : MonoBehaviour
 
     public void ValueChangeCheck(){
         Debug.Log("Music: " + MusicSlider.value);
-        Debug.Log("SFX: " + SFXSlider.value);
 
         // Guardar los valores
         PlayerPrefs.SetFloat("Music", MusicSlider.value);
-        PlayerPrefs.SetFloat("SFX", SFXSlider.value);
         PlayerPrefs.Save();
     }
 
