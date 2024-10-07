@@ -11,6 +11,8 @@ public class chr_UI_Manager : MonoBehaviour
     [SerializeField] private GameObject MenuPanel;
     [SerializeField] private GameObject SettingsPanel;
     [SerializeField] private GameObject GamePanel;
+    public GameObject NivelFer;
+    public GameObject NivelQuique;
     [SerializeField] private GameObject PausePanel;
     [SerializeField] private GameObject GameoverPanel;
     [SerializeField] private GameObject ExitPanel;
@@ -32,6 +34,11 @@ public class chr_UI_Manager : MonoBehaviour
 
     [Header ("Singleton")]
     public static chr_UI_Manager instance;
+
+    [Header("Certificate Generator")]
+    public Image screenshotImage1;
+    public Image screenshotImage2;
+    public TMP_InputField playerNameInput;
 
     private void Awake() {
         if(instance == null){
@@ -73,6 +80,20 @@ public class chr_UI_Manager : MonoBehaviour
         PausePanel.SetActive(false);
         GameoverPanel.SetActive(false);
         ExitPanel.SetActive(false);
+    }
+
+    public void SetupCertificate1(Texture2D screenshot1)
+    {
+        screenshotImage1.sprite = Sprite.Create(screenshot1, new Rect(0, 0, screenshot1.width, screenshot1.height), new Vector2(0.5f, 0.5f));
+    }
+
+    public void SetupCertificate2(Texture2D screenshot2){
+        screenshotImage2.sprite = Sprite.Create(screenshot2, new Rect(0, 0, screenshot2.width, screenshot2.height), new Vector2(0.5f, 0.5f));
+    }
+
+    public void SaveCertificateAsImage()
+    {
+        string playerName = playerNameInput.text;
     }
 
     public void CambiarResolucion(){
@@ -182,6 +203,8 @@ public class chr_UI_Manager : MonoBehaviour
         HideAllPanels();
         GameoverPanel.SetActive(true);
         chr_GameManager.instance.gameState = GameState.GameOver;
+
+        SetupCertificate2(ScreenCapture.CaptureScreenshotAsTexture());
     }
 
     public void CancelExit(){

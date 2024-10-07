@@ -59,11 +59,17 @@ public class chr_GameManager : MonoBehaviour
     public void CargarJuego1(){
         FerLevel.SetActive(true);
         QuiqueLevel.SetActive(false);
+        chr_UI_Manager.instance.NivelFer.SetActive(true);
+        chr_UI_Manager.instance.NivelQuique.SetActive(false);
     }
 
     public void CargarJuego2(){
         FerLevel.SetActive(false);
         QuiqueLevel.SetActive(true);
+        chr_UI_Manager.instance.NivelFer.SetActive(false);
+        chr_UI_Manager.instance.NivelQuique.SetActive(true);
+
+        chr_UI_Manager.instance.SetupCertificate1(ScreenCapture.CaptureScreenshotAsTexture());
     }
 
     public void RegresarMenu(){
