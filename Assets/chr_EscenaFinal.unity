@@ -209,7 +209,7 @@ GameObject:
   - component: {fileID: 182048361}
   - component: {fileID: 182048360}
   m_Layer: 5
-  m_Name: Button (7)
+  m_Name: Ship 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -244,7 +244,7 @@ Animator:
   m_GameObject: {fileID: 182048358}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: bb7a3368adfed0e4883dc447dc41fdba, type: 2}
+  m_Controller: {fileID: 9100000, guid: 7cc4b8c0c43636b4fbd9c471864613f5, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -351,7 +351,7 @@ GameObject:
   - component: {fileID: 239243023}
   - component: {fileID: 239243022}
   m_Layer: 5
-  m_Name: Button (8)
+  m_Name: Tree 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -386,7 +386,7 @@ Animator:
   m_GameObject: {fileID: 239243020}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: bb7a3368adfed0e4883dc447dc41fdba, type: 2}
+  m_Controller: {fileID: 9100000, guid: e71d0afb87e28244692cc9d440de31e1, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -606,7 +606,7 @@ GameObject:
   - component: {fileID: 643544903}
   - component: {fileID: 643544902}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Mosntruo 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -881,7 +881,7 @@ GameObject:
   - component: {fileID: 682352109}
   - component: {fileID: 682352108}
   m_Layer: 5
-  m_Name: Button (4)
+  m_Name: Roca 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -916,7 +916,7 @@ Animator:
   m_GameObject: {fileID: 682352106}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: bb7a3368adfed0e4883dc447dc41fdba, type: 2}
+  m_Controller: {fileID: 9100000, guid: 3826d033e4f5ee44badc45ce01914e49, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1023,7 +1023,7 @@ GameObject:
   - component: {fileID: 806143151}
   - component: {fileID: 806143150}
   m_Layer: 5
-  m_Name: Button (6)
+  m_Name: Ship 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1058,7 +1058,7 @@ Animator:
   m_GameObject: {fileID: 806143148}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: bb7a3368adfed0e4883dc447dc41fdba, type: 2}
+  m_Controller: {fileID: 9100000, guid: 7e1447239abe4584fb6b1e501079f345, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1165,7 +1165,7 @@ GameObject:
   - component: {fileID: 847978075}
   - component: {fileID: 847978074}
   m_Layer: 5
-  m_Name: Button (5)
+  m_Name: Roca 5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1200,7 +1200,7 @@ Animator:
   m_GameObject: {fileID: 847978072}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: bb7a3368adfed0e4883dc447dc41fdba, type: 2}
+  m_Controller: {fileID: 9100000, guid: 3ee47804a5d11ca448faceecdcd428aa, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1313,7 +1313,7 @@ GameObject:
   - component: {fileID: 981124346}
   - component: {fileID: 981124345}
   m_Layer: 5
-  m_Name: Button (2)
+  m_Name: Roca 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1348,7 +1348,7 @@ Animator:
   m_GameObject: {fileID: 981124343}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: bb7a3368adfed0e4883dc447dc41fdba, type: 2}
+  m_Controller: {fileID: 9100000, guid: 88e9ecde00350a34ebe09e5215802840, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1606,7 +1606,7 @@ GameObject:
   - component: {fileID: 1357472833}
   - component: {fileID: 1357472832}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: Roca 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1641,7 +1641,7 @@ Animator:
   m_GameObject: {fileID: 1357472830}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: bb7a3368adfed0e4883dc447dc41fdba, type: 2}
+  m_Controller: {fileID: 9100000, guid: a54f6eb617e38f846b6ab7f26ba2736e, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1748,7 +1748,7 @@ GameObject:
   - component: {fileID: 1582077040}
   - component: {fileID: 1582077039}
   m_Layer: 5
-  m_Name: Button (10)
+  m_Name: Tree 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1783,7 +1783,7 @@ Animator:
   m_GameObject: {fileID: 1582077037}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: bb7a3368adfed0e4883dc447dc41fdba, type: 2}
+  m_Controller: {fileID: 9100000, guid: a5034a838944cf9488b593542fda5313, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -2119,7 +2119,7 @@ GameObject:
   - component: {fileID: 1741469999}
   - component: {fileID: 1741469998}
   m_Layer: 5
-  m_Name: Button (9)
+  m_Name: Tree 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2154,7 +2154,7 @@ Animator:
   m_GameObject: {fileID: 1741469996}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: bb7a3368adfed0e4883dc447dc41fdba, type: 2}
+  m_Controller: {fileID: 9100000, guid: f2257b910d65e994b8afbc0a179c4ee7, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -2261,7 +2261,7 @@ GameObject:
   - component: {fileID: 1812284546}
   - component: {fileID: 1812284545}
   m_Layer: 5
-  m_Name: Button (3)
+  m_Name: Roca 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2296,7 +2296,7 @@ Animator:
   m_GameObject: {fileID: 1812284543}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: bb7a3368adfed0e4883dc447dc41fdba, type: 2}
+  m_Controller: {fileID: 9100000, guid: e5675761993b64b42b6779064da2d2e6, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
