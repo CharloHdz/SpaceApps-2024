@@ -61,7 +61,7 @@ public class chr_GameManager : MonoBehaviour
     }
 
     public void RegresarMenu(){
-        SceneManager.LoadScene("Chr_Scene");
+        SceneManager.LoadScene("chr_EscenaFinal");
     }
 }
 
